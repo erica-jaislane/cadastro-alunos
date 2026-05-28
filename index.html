@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <!-- Define que o site se adapta a qualquer tamanho de tela -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Alunos</title>
+  <style>
+    /* Estilo geral da página */
+    body {
+      font-family: Arial, sans-serif; /* Fonte padrão */
+      max-width: 800px;               /* Largura máxima centralizada */
+      margin: 0 auto;                 /* Centraliza na tela */
+      padding: 20px;                  /* Espaçamento interno */
+    }
+
+    h1 {
+      color: #333;
+      text-align: center; /* Título centralizado */
+    }
+
+    /* Espaçamento entre os campos do formulário */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    /* Estilo dos rótulos (labels) */
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    /* Estilo dos campos de entrada de dados */
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    /* Estilo dos botões */
+    button {
+      background-color: #4CAF50; /* Verde padrão */
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    /* Efeito ao passar o mouse no botão */
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Estilo da tabela de listagem */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    /* Estilo das células da tabela */
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    /* Cabeçalho da tabela com fundo cinza */
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cadastro de Alunos</h1>
+
+  <!-- Formulário de cadastro e edição de alunos -->
+  <form id="cadastroForm">
+
+    <!-- Campo oculto para guardar o ID do aluno durante a edição -->
+    <input type="hidden" id="alunoId">
+
+    <!-- Campo para digitar a matrícula do aluno -->
+    <div class="form-group">
+      <label for="matricula">Matrícula:</label>
+      <input type="text" id="matricula" required>
+    </div>
+
+    <!-- Campo para digitar o nome do aluno -->
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required>
+    </div>
+
+    <!-- Campo para digitar o email do aluno -->
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+
+    <div>
+      <!-- Botão cancelar: só aparece durante a edição -->
+      <button type="button" id="btnCancelar" style="display:none;">Cancelar</button>
+
+      <!-- Botão principal: muda entre "Cadastrar" e "Atualizar" -->
+      <button type="submit" id="btnCadastrar">Cadastrar</button>
+    </div>
+  </form>
+
+  <h2>Alunos Cadastrados</h2>
+
+  <!-- Tabela onde os alunos serão exibidos dinamicamente via JavaScript -->
+  <table id="listaAlunos">
+    <thead>
+      <tr>
+        <th>Matrícula</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <!-- O tbody é preenchido pelo JavaScript com os dados do Firestore -->
+    <tbody id="corpoTabela">
+    </tbody>
+  </table>
+
+  <!-- Importa o arquivo JavaScript como módulo ES6 -->
+  <script type="module" src="crud.js"></script>
+</body>
+</html>
